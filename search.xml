@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2017%2F11%2F06%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo 博客搭建记录]]></title>
+    <url>%2F2017%2F11%2F04%2Fbuild-record%2F</url>
+    <content type="text"><![CDATA[记录本博客搭建历程 基本框架Hexo 建站https://hexo.io/zh-cn/docs/setup.html 123$ hexo init hexo_xblog$ cd hexo_xblog/$ npm install 使用 NexT 主题http://theme-next.iissnan.com/getting-started.html 下载1$ git clone https://github.com/iissnan/hexo-theme-next themes/next 启用打开 站点配置文件， 找到 theme 字段，并将其值更改为 next。 1$ vim _config.yml 1theme: next 本地运行1hexo s --debug next 主题提供了多个样式以供选择，我使用了 Mist 样式：1vim themes/next/_config.yml 1scheme: Mist 部署到 github.iohttps://hexo.io/zh-cn/docs/deployment.html 在站点配置文件中配置 deploy 字段1$ vim _config.yml 12345deploy: type: git repo: git@github.com:shenxgan/shenxgan.github.io.git branch: master message: 安装 hexo-deployer-git1$ npm install hexo-deployer-git --save 部署1$ hexo deploy 如果是重新部署，则最好先进行 clean，不然修改了配置后部署并不会生效。1$ hexo clean; hexo deploy 集成第三方服务http://theme-next.iissnan.com/third-party-services.html 搜索个人觉得 Local Search 就比较好用。具体使用方法官网已经写着很明细了，照着弄就行。http://theme-next.iissnan.com/third-party-services.html#local-search 评论选用的是 gitment 作为博客的评论系统。gitment 使用 github 的 issue 来达到评论的目的，个人觉得非常不错。 因为在 next 主题的配置文件中发现了 gitment， 说明 next 主题已经直接支持 gitment 了。所以没有再使用 gitment 作者这篇文章中介绍的方式来使用 gitment；而是直接在 next 主题配置文件中配置相应的参数即可。 安装 gitment1$ npm install --save gitment 启动 gitment 并添加配置1vim themes/next/_config.yml 12345678910111213gitment: enable: true mint: true count: true lazy: false cleanly: false language: github_user: shenxgan github_repo: shenxgan.github.io client_id: 5e1xxxxxxxxxx87c1 client_secret: 1c7xxxxxxxxxxxxxxxxxxx409b proxy_gateway: redirect_protocol: 千万注意不要将 github_user 和 github_repo 弄错 我在刚开始的时候弄错了，事情大概是这样的： github_user 以为是 github 中用户的 id，还使用这个 api (https://api.github.com/users/shenxgan) 来获取自己的 id 来着。 当时一直以为是 github_repo 的问题，因为刚开始我写这个值的时候是带着 git 的；后来查到这个 issue 中写的，又认为值应该是 shenxgan … 一直都不对 还好，最终搞了两天终于弄好了 (*^_^*) client_id 和 client_secret 可参照 gitment 作者写的：https://imsun.net/posts/gitment-introduction/#1-注册-OAuth-Application 修改主题样式]]></content>
+  </entry>
+</search>
