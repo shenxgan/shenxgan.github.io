@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="spark,mysql," />
 
 
 
@@ -79,16 +79,20 @@
 
 
 
-<meta name="description" content="personal blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="xblog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="介绍 spark 读写 mysql 数据库的方式spark 版本为 2.2.0  spark-shell 交互中连接 mysql官网的示例首先来看看官网上的示例： 1bin/spark-shell --driver-class-path postgresql-9.4.1207.jar --jars postgresql-9.4.1207.jar 可以看到，官网上使用的是 postgresql 数">
+<meta name="keywords" content="spark,mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark 读写 MySQL 数据库">
+<meta property="og:url" content="http://yoursite.com/2017/11/22/spark-mysql/index.html">
 <meta property="og:site_name" content="xblog">
-<meta property="og:description" content="personal blog">
+<meta property="og:description" content="介绍 spark 读写 mysql 数据库的方式spark 版本为 2.2.0  spark-shell 交互中连接 mysql官网的示例首先来看看官网上的示例： 1bin/spark-shell --driver-class-path postgresql-9.4.1207.jar --jars postgresql-9.4.1207.jar 可以看到，官网上使用的是 postgresql 数">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2017/11/22/spark-mysql/spark-shell.png">
+<meta property="og:updated_time" content="2017-11-22T11:05:39.007Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xblog">
-<meta name="twitter:description" content="personal blog">
+<meta name="twitter:title" content="Spark 读写 MySQL 数据库">
+<meta name="twitter:description" content="介绍 spark 读写 mysql 数据库的方式spark 版本为 2.2.0  spark-shell 交互中连接 mysql官网的示例首先来看看官网上的示例： 1bin/spark-shell --driver-class-path postgresql-9.4.1207.jar --jars postgresql-9.4.1207.jar 可以看到，官网上使用的是 postgresql 数">
+<meta name="twitter:image" content="http://yoursite.com/2017/11/22/spark-mysql/spark-shell.png">
 
 
 
@@ -118,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/22/spark-mysql/"/>
 
 
 
 
 
-  <title>xblog</title>
+  <title>Spark 读写 MySQL 数据库 | xblog</title>
   
 
 
@@ -143,8 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -261,9 +264,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -293,9 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/22/spark-mysql/" itemprop="url">Spark 读写 MySQL 数据库</a></h1>
+          <h1 class="post-title" itemprop="name headline">Spark 读写 MySQL 数据库</h1>
         
 
         <div class="post-meta">
@@ -321,6 +322,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/22/spark-mysql/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/11/22/spark-mysql/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -345,9 +356,7 @@
       
 
       
-        
-          
-            <blockquote>
+        <blockquote>
 <p>介绍 spark 读写 mysql 数据库的方式<br>spark 版本为 2.2.0</p>
 </blockquote>
 <h1 id="spark-shell-交互中连接-mysql"><a href="#spark-shell-交互中连接-mysql" class="headerlink" title="spark-shell 交互中连接 mysql"></a>spark-shell 交互中连接 mysql</h1><h2 id="官网的示例"><a href="#官网的示例" class="headerlink" title="官网的示例"></a>官网的示例</h2><p>首先来看看<a href="https://spark.apache.org/docs/latest/sql-programming-guide.html#jdbc-to-other-databases" target="_blank" rel="external">官网</a>上的示例：</p>
@@ -364,8 +373,6 @@
 <h2 id="写入数据到-mysql"><a href="#写入数据到-mysql" class="headerlink" title="写入数据到 mysql"></a>写入数据到 mysql</h2><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">scala&gt; <span class="keyword">case</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="params">name: <span class="type">String</span>, age: <span class="type">Long</span></span>)</span></div><div class="line"><span class="class"><span class="title">defined</span> <span class="title">class</span> <span class="title">Person</span></span></div><div class="line"><span class="class"></span></div><div class="line"><span class="class"><span class="title">scala&gt;</span> <span class="title">val</span> <span class="title">df</span> </span>= <span class="type">Seq</span>(<span class="type">Person</span>(<span class="string">"Andy"</span>, <span class="number">32</span>)).toDF()</div><div class="line">df: org.apache.spark.sql.<span class="type">DataFrame</span> = [name: string, age: bigint]</div><div class="line"></div><div class="line">scala&gt; df.show()</div><div class="line">+----+---+</div><div class="line">|name|age|</div><div class="line">+----+---+</div><div class="line">|<span class="type">Andy</span>| <span class="number">32</span>|</div><div class="line">+----+---+</div><div class="line"></div><div class="line"></div><div class="line">scala&gt; df.write.jdbc(jdbc_url, <span class="string">"student"</span>, connectionProperties)</div><div class="line">org.apache.spark.sql.<span class="type">AnalysisException</span>: <span class="type">Table</span> or view <span class="symbol">'studen</span>t' already exists. <span class="type">SaveMode</span>: <span class="type">ErrorIfExists</span>.;</div><div class="line">  at org.apache.spark.sql.execution.datasources.jdbc.<span class="type">JdbcRelationProvider</span>.createRelation(<span class="type">JdbcRelationProvider</span>.scala:<span class="number">81</span>)</div><div class="line">  at org.apache.spark.sql.execution.datasources.<span class="type">DataSource</span>.write(<span class="type">DataSource</span>.scala:<span class="number">472</span>)</div><div class="line">  at org.apache.spark.sql.execution.datasources.<span class="type">SaveIntoDataSourceCommand</span>.run(<span class="type">SaveIntoDataSourceCommand</span>.scala:<span class="number">48</span>)</div><div class="line">  at org.apache.spark.sql.execution.command.<span class="type">ExecutedCommandExec</span>.sideEffectResult$lzycompute(commands.scala:<span class="number">58</span>)</div><div class="line">  at org.apache.spark.sql.execution.command.<span class="type">ExecutedCommandExec</span>.sideEffectResult(commands.scala:<span class="number">56</span>)</div><div class="line">  at org.apache.spark.sql.execution.command.<span class="type">ExecutedCommandExec</span>.doExecute(commands.scala:<span class="number">74</span>)</div><div class="line">  at org.apache.spark.sql.execution.<span class="type">SparkPlan</span>$$anonfun$execute$<span class="number">1.</span>apply(<span class="type">SparkPlan</span>.scala:<span class="number">117</span>)</div><div class="line">  at org.apache.spark.sql.execution.<span class="type">SparkPlan</span>$$anonfun$execute$<span class="number">1.</span>apply(<span class="type">SparkPlan</span>.scala:<span class="number">117</span>)</div><div class="line">  at org.apache.spark.sql.execution.<span class="type">SparkPlan</span>$$anonfun$executeQuery$<span class="number">1.</span>apply(<span class="type">SparkPlan</span>.scala:<span class="number">138</span>)</div><div class="line">  at org.apache.spark.rdd.<span class="type">RDDOperationScope</span>$.withScope(<span class="type">RDDOperationScope</span>.scala:<span class="number">151</span>)</div><div class="line">  at org.apache.spark.sql.execution.<span class="type">SparkPlan</span>.executeQuery(<span class="type">SparkPlan</span>.scala:<span class="number">135</span>)</div><div class="line">  at org.apache.spark.sql.execution.<span class="type">SparkPlan</span>.execute(<span class="type">SparkPlan</span>.scala:<span class="number">116</span>)</div><div class="line">  at org.apache.spark.sql.execution.<span class="type">QueryExecution</span>.toRdd$lzycompute(<span class="type">QueryExecution</span>.scala:<span class="number">92</span>)</div><div class="line">  at org.apache.spark.sql.execution.<span class="type">QueryExecution</span>.toRdd(<span class="type">QueryExecution</span>.scala:<span class="number">92</span>)</div><div class="line">  at org.apache.spark.sql.<span class="type">DataFrameWriter</span>.runCommand(<span class="type">DataFrameWriter</span>.scala:<span class="number">610</span>)</div><div class="line">  at org.apache.spark.sql.<span class="type">DataFrameWriter</span>.save(<span class="type">DataFrameWriter</span>.scala:<span class="number">233</span>)</div><div class="line">  at org.apache.spark.sql.<span class="type">DataFrameWriter</span>.jdbc(<span class="type">DataFrameWriter</span>.scala:<span class="number">461</span>)</div><div class="line">  ... <span class="number">48</span> elided</div><div class="line"></div><div class="line">scala&gt; <span class="keyword">import</span> org.apache.spark.sql.<span class="type">SaveMode</span></div><div class="line"><span class="keyword">import</span> org.apache.spark.sql.<span class="type">SaveMode</span></div><div class="line"></div><div class="line">scala&gt; df.write.mode(<span class="type">SaveMode</span>.<span class="type">Append</span>).jdbc(jdbc_url, <span class="string">"student"</span>, connectionProperties)</div><div class="line"></div><div class="line">scala&gt; df_student.show()</div><div class="line">+---+----+---+</div><div class="line">| id|name|age|</div><div class="line">+---+----+---+</div><div class="line">|  <span class="number">2</span>|  张三| <span class="number">18</span>|</div><div class="line">|  <span class="number">4</span>|  李四| <span class="number">20</span>|</div><div class="line">|  <span class="number">6</span>|<span class="type">Andy</span>| <span class="number">32</span>|</div><div class="line">+---+----+---+</div><div class="line"></div><div class="line"></div><div class="line">scala&gt;</div></pre></td></tr></table></figure>
 <h2 id="命令汇总"><a href="#命令汇总" class="headerlink" title="命令汇总"></a>命令汇总</h2><p>总的一套下来，就是如下这些：<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="type">Class</span>.forName(<span class="string">"com.mysql.jdbc.Driver"</span>)</div><div class="line"></div><div class="line"><span class="comment">// 数据库连接属性信息</span></div><div class="line"><span class="keyword">val</span> jdbcUsername = <span class="string">"root"</span></div><div class="line"><span class="keyword">val</span> jdbcPassword = <span class="string">"xxxxxx"</span></div><div class="line"><span class="keyword">val</span> jdbcHostname = <span class="string">"localhost"</span></div><div class="line"><span class="keyword">val</span> jdbcPort = <span class="number">3306</span></div><div class="line"><span class="keyword">val</span> jdbcDatabase =<span class="string">"xblog"</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.<span class="type">Properties</span></div><div class="line"><span class="keyword">val</span> connectionProperties = <span class="keyword">new</span> <span class="type">Properties</span>()</div><div class="line">connectionProperties.put(<span class="string">"user"</span>, jdbcUsername)</div><div class="line">connectionProperties.put(<span class="string">"password"</span>, jdbcPassword)</div><div class="line"></div><div class="line"><span class="comment">// 读取数据库表 student</span></div><div class="line"><span class="keyword">val</span> jdbc_url = <span class="string">s"jdbc:mysql://<span class="subst">$&#123;jdbcHostname&#125;</span>:<span class="subst">$&#123;jdbcPort&#125;</span>/<span class="subst">$&#123;jdbcDatabase&#125;</span>"</span></div><div class="line"><span class="keyword">val</span> df_student = spark.read.jdbc(jdbc_url, <span class="string">"student"</span>, connectionProperties)</div><div class="line">df_student.show()</div><div class="line"></div><div class="line"><span class="comment">// 创建一个 DataFrame</span></div><div class="line"><span class="comment">// https://spark.apache.org/docs/latest/sql-programming-guide.html#creating-datasets</span></div><div class="line"><span class="keyword">case</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="params">name: <span class="type">String</span>, age: <span class="type">Long</span></span>)</span></div><div class="line"><span class="class"><span class="title">val</span> <span class="title">df</span> </span>= <span class="type">Seq</span>(<span class="type">Person</span>(<span class="string">"Andy"</span>, <span class="number">32</span>)).toDF()</div><div class="line">df.show()</div><div class="line"></div><div class="line"><span class="comment">// 存入数据库表</span></div><div class="line"><span class="keyword">import</span> org.apache.spark.sql.<span class="type">SaveMode</span></div><div class="line">df.write.mode(<span class="type">SaveMode</span>.<span class="type">Append</span>).jdbc(jdbc_url, <span class="string">"student"</span>, connectionProperties)</div><div class="line">df_student.show()</div></pre></td></tr></table></figure></p>
 <h1 id="spark-程序中连接-mysql"><a href="#spark-程序中连接-mysql" class="headerlink" title="spark 程序中连接 mysql"></a>spark 程序中连接 mysql</h1>
-          
-        
       
     </div>
     
@@ -380,295 +387,38 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/04/build-record/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shenxgan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/9276147?v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xblog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/04/build-record/" itemprop="url">Hexo 博客搭建记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-04T12:41:54+08:00">
-                2017-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/spark/" rel="tag"># spark</a>
           
-            
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
           
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>记录本博客搭建历程</p>
-</blockquote>
-<h1 id="基本框架"><a href="#基本框架" class="headerlink" title="基本框架"></a>基本框架</h1><h2 id="Hexo-建站"><a href="#Hexo-建站" class="headerlink" title="Hexo 建站"></a>Hexo 建站</h2><p><a href="https://hexo.io/zh-cn/docs/setup.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/setup.html</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo init hexo_xblog</div><div class="line">$ <span class="built_in">cd</span> hexo_xblog/</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
-<h2 id="使用-NexT-主题"><a href="#使用-NexT-主题" class="headerlink" title="使用 NexT 主题"></a>使用 NexT 主题</h2><p><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">http://theme-next.iissnan.com/getting-started.html</a></p>
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
-<h3 id="启用"><a href="#启用" class="headerlink" title="启用"></a>启用</h3><p>打开 站点配置文件， 找到 theme 字段，并将其值更改为 next。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vim _config.yml</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theme: next</div></pre></td></tr></table></figure>
-<h3 id="本地运行"><a href="#本地运行" class="headerlink" title="本地运行"></a>本地运行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo s --debug</div></pre></td></tr></table></figure>
-<p>next 主题提供了多个样式以供选择，我使用了 Mist 样式：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim themes/next/_config.yml</div></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scheme: Mist</div></pre></td></tr></table></figure>
-<h3 id="部署到-github-io"><a href="#部署到-github-io" class="headerlink" title="部署到 github.io"></a>部署到 github.io</h3><p><a href="https://hexo.io/zh-cn/docs/deployment.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/deployment.html</a></p>
-<h4 id="在站点配置文件中配置-deploy-字段"><a href="#在站点配置文件中配置-deploy-字段" class="headerlink" title="在站点配置文件中配置 deploy 字段"></a>在站点配置文件中配置 deploy 字段</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vim _config.yml</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:shenxgan/shenxgan.github.io.git</div><div class="line">  branch: master</div><div class="line">  message:</div></pre></td></tr></table></figure>
-<h4 id="安装-hexo-deployer-git"><a href="#安装-hexo-deployer-git" class="headerlink" title="安装 hexo-deployer-git"></a>安装 hexo-deployer-git</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
-<h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>如果是重新部署，则最好先进行 clean，不然修改了配置后部署并不会生效。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo clean; hexo deploy</div></pre></td></tr></table></figure></p>
-<h1 id="集成第三方服务"><a href="#集成第三方服务" class="headerlink" title="集成第三方服务"></a>集成第三方服务</h1><p><a href="http://theme-next.iissnan.com/third-party-services.html" target="_blank" rel="external">http://theme-next.iissnan.com/third-party-services.html</a></p>
-<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p>个人觉得 Local Search 就比较好用。具体使用方法官网已经写着很明细了，照着弄就行。<br><a href="http://theme-next.iissnan.com/third-party-services.html#local-search" target="_blank" rel="external">http://theme-next.iissnan.com/third-party-services.html#local-search</a></p>
-<h2 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h2><p>选用的是 <a href="https://github.com/imsun/gitment" target="_blank" rel="external">gitment</a> 作为博客的评论系统。<br>gitment 使用 github 的 issue 来达到评论的目的，个人觉得非常不错。</p>
-<p>因为在 next 主题的配置文件中发现了 gitment， 说明 next 主题已经直接支持 gitment 了。<br>所以没有再使用 gitment 作者<a href="https://imsun.net/posts/gitment-introduction/" target="_blank" rel="external">这篇文章</a>中介绍的方式来使用 gitment；而是直接在 next 主题配置文件中配置相应的参数即可。</p>
-<h3 id="安装-gitment"><a href="#安装-gitment" class="headerlink" title="安装 gitment"></a>安装 gitment</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save gitment</div></pre></td></tr></table></figure>
-<h3 id="启动-gitment-并添加配置"><a href="#启动-gitment-并添加配置" class="headerlink" title="启动 gitment 并添加配置"></a>启动 gitment 并添加配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim themes/next/_config.yml</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">gitment:</div><div class="line">  enable: true</div><div class="line">  mint: true</div><div class="line">  count: true</div><div class="line">  lazy: false</div><div class="line">  cleanly: false</div><div class="line">  language:</div><div class="line">  github_user: shenxgan</div><div class="line">  github_repo: shenxgan.github.io</div><div class="line">  client_id: 5e1xxxxxxxxxx87c1</div><div class="line">  client_secret: 1c7xxxxxxxxxxxxxxxxxxx409b</div><div class="line">  proxy_gateway:</div><div class="line">  redirect_protocol:</div></pre></td></tr></table></figure>
-<p><strong> 千万注意不要将 github_user 和 github_repo 弄错 </strong></p>
-<p>我在刚开始的时候弄错了，事情大概是这样的：</p>
-<ol>
-<li>github_user 以为是 github 中用户的 id，还使用这个 api (<a href="https://api.github.com/users/shenxgan" target="_blank" rel="external">https://api.github.com/users/shenxgan</a>) 来获取自己的 id 来着。</li>
-<li>当时一直以为是 github_repo 的问题，因为刚开始我写这个值的时候是带着 git 的；后来查到这个 <a href="https://github.com/imsun/gitment/issues/18" target="_blank" rel="external">issue</a> 中写的，又认为值应该是 shenxgan … 一直都不对</li>
-</ol>
-<p>还好，最终搞了两天终于弄好了 (*^_^*)</p>
-<p>client_id 和 client_secret 可参照 gitment 作者写的：<a href="https://imsun.net/posts/gitment-introduction/#1-注册-OAuth-Application" target="_blank" rel="external">https://imsun.net/posts/gitment-introduction/#1-注册-OAuth-Application</a></p>
-<h1 id="修改主题样式"><a href="#修改主题样式" class="headerlink" title="修改主题样式"></a>修改主题样式</h1>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/02/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shenxgan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/9276147?v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xblog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/02/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-02T22:22:22+08:00">
-                2017-11-02
-              </time>
+              <a href="/2017/11/04/build-record/" rel="next" title="Hexo 博客搭建记录">
+                <i class="fa fa-chevron-left"></i> Hexo 博客搭建记录
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -678,10 +428,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -689,6 +440,17 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -709,8 +471,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -767,6 +538,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#spark-shell-交互中连接-mysql"><span class="nav-number">1.</span> <span class="nav-text">spark-shell 交互中连接 mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#官网的示例"><span class="nav-number">1.1.</span> <span class="nav-text">官网的示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载-mysql-相应的-jar-包"><span class="nav-number">1.2.</span> <span class="nav-text">下载 mysql 相应的 jar 包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动-spark-shell"><span class="nav-number">1.3.</span> <span class="nav-text">启动 spark-shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取-mysql-表数据"><span class="nav-number">1.4.</span> <span class="nav-text">读取 mysql 表数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写入数据到-mysql"><span class="nav-number">1.5.</span> <span class="nav-text">写入数据到 mysql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令汇总"><span class="nav-number">1.6.</span> <span class="nav-text">命令汇总</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spark-程序中连接-mysql"><span class="nav-number">2.</span> <span class="nav-text">spark 程序中连接 mysql</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -900,6 +687,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -946,6 +737,30 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'shenxgan',
+            repo: 'shenxgan.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '1c7ad7e5e674e5eefa9687258794eabd20a5409b',
+            
+                client_id: '5e1323749314a43987c1'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
