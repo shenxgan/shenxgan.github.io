@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="pandas," />
 
 
 
@@ -79,16 +79,20 @@
 
 
 
-<meta name="description" content="personal blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="xblog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="整理 pandas 常用操作整理记录工作学习中遇到的所有 pandas 操作">
+<meta name="keywords" content="pandas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pandas 常用操作">
+<meta property="og:url" content="http://yoursite.com/2017/12/05/pandas-basis/index.html">
 <meta property="og:site_name" content="xblog">
-<meta property="og:description" content="personal blog">
+<meta property="og:description" content="整理 pandas 常用操作整理记录工作学习中遇到的所有 pandas 操作">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2017/12/05/pandas-basis/pandas_merge.png">
+<meta property="og:updated_time" content="2017-12-13T03:13:51.062Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xblog">
-<meta name="twitter:description" content="personal blog">
+<meta name="twitter:title" content="Pandas 常用操作">
+<meta name="twitter:description" content="整理 pandas 常用操作整理记录工作学习中遇到的所有 pandas 操作">
+<meta name="twitter:image" content="http://yoursite.com/2017/12/05/pandas-basis/pandas_merge.png">
 
 
 
@@ -118,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/05/pandas-basis/"/>
 
 
 
 
 
-  <title>xblog</title>
+  <title>Pandas 常用操作 | xblog</title>
   
 
 
@@ -143,8 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -261,9 +264,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -293,9 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/05/pandas-basis/" itemprop="url">Pandas 常用操作</a></h1>
+          <h1 class="post-title" itemprop="name headline">Pandas 常用操作</h1>
         
 
         <div class="post-meta">
@@ -333,6 +334,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/05/pandas-basis/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/12/05/pandas-basis/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -357,18 +368,38 @@
       
 
       
-        
-          <blockquote>
+        <blockquote>
 <p>整理 pandas 常用操作<br>整理记录工作学习中遇到的所有 pandas 操作</p>
 </blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/05/pandas-basis/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<a id="more"></a>
+<h3 id="设置输出宽度"><a href="#设置输出宽度" class="headerlink" title="设置输出宽度"></a>设置输出宽度</h3><p><a href="http://pandas.pydata.org/pandas-docs/stable/options.html" target="_blank" rel="external">http://pandas.pydata.org/pandas-docs/stable/options.html</a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pd.set_option(<span class="string">'display.width'</span>, <span class="keyword">None</span>)</div></pre></td></tr></table></figure></p>
+<p>设置成 <code>None</code> 后，在打印 dataframe 时，所有的列名将不会再换行，看起来会比较清晰、舒服</p>
+<h3 id="更改列名"><a href="#更改列名" class="headerlink" title="更改列名"></a>更改列名</h3><p><a href="http://stackoverflow.com/questions/11346283/renaming-columns-in-pandas" target="_blank" rel="external">http://stackoverflow.com/questions/11346283/renaming-columns-in-pandas</a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df = df.rename(columns=&#123;<span class="string">'oldName1'</span>: <span class="string">'newName1'</span>, <span class="string">'oldName2'</span>: <span class="string">'newName2'</span>&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="dataframe-长度"><a href="#dataframe-长度" class="headerlink" title="dataframe 长度"></a>dataframe 长度</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">len(df.index)</div></pre></td></tr></table></figure>
+<h3 id="所有列的数据类型"><a href="#所有列的数据类型" class="headerlink" title="所有列的数据类型"></a>所有列的数据类型</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df.dtypes</div></pre></td></tr></table></figure>
+<h3 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h3><p><a href="http://pandas.pydata.org/pandas-docs/stable/merging.html" target="_blank" rel="external">http://pandas.pydata.org/pandas-docs/stable/merging.html</a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = pd.merge(left, right, on=[<span class="string">'key1'</span>, <span class="string">'key2'</span>])</div></pre></td></tr></table></figure></p>
+<img src="/2017/12/05/pandas-basis/pandas_merge.png" title="pandas merge 截图">
+<h3 id="update"><a href="#update" class="headerlink" title="update"></a>update</h3><p><code>df</code> 和 <code>df2</code> 的 <code>index</code> 必须要保证数据类型一样，特别要注意 <code>int</code> 和 <code>string</code>；因为两者人眼并不能看出来，但是就因为数据类型不一样就会导致 update 总是没有效果<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df.update(df2)</div></pre></td></tr></table></figure></p>
+<h3 id="append"><a href="#append" class="headerlink" title="append"></a>append</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df = df.append(df2)</div></pre></td></tr></table></figure>
+<h3 id="读取-csv-文件"><a href="#读取-csv-文件" class="headerlink" title="读取 csv 文件"></a>读取 csv 文件</h3><p><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html" target="_blank" rel="external">https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html</a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df = pd.read_csv(csv_path)</div></pre></td></tr></table></figure></p>
+<h3 id="保存为-csv-文件"><a href="#保存为-csv-文件" class="headerlink" title="保存为 csv 文件"></a>保存为 csv 文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df.to_csv(<span class="string">'test.csv'</span>, header=<span class="keyword">True</span>, index=<span class="keyword">False</span>, mode=<span class="string">'w'</span>, encoding=<span class="string">"utf8"</span>)</div></pre></td></tr></table></figure>
+<p>如果 csv 文件中有中文（无论是表头还是内容），可以将 <code>encoding</code> 设置为 <code>encoding=&quot;gbk&quot;</code></p>
+<h3 id="groupby-之后求去重个数"><a href="#groupby-之后求去重个数" class="headerlink" title="groupby 之后求去重个数"></a>groupby 之后求去重个数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">df.groupby(index).agg(&#123;<span class="string">'field'</span>: <span class="keyword">lambda</span> x: len(x.unique())&#125;)</div><div class="line">df.groupby(index).field.nunique()</div></pre></td></tr></table></figure>
+<h3 id="检测是否为空"><a href="#检测是否为空" class="headerlink" title="检测是否为空"></a>检测是否为空</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> df.empty:</div><div class="line">    print(<span class="string">'df is empty.'</span>)</div></pre></td></tr></table></figure>
+<h3 id="填充-NA-NaN"><a href="#填充-NA-NaN" class="headerlink" title="填充 NA/NaN"></a>填充 NA/NaN</h3><p><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.fillna.html" target="_blank" rel="external">https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.fillna.html</a><br>将所有 NaN 替换为 0<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">df = df.fillna(<span class="number">0</span>)               <span class="comment"># 填充为 0</span></div><div class="line">df = df[df.field.notnull()]     <span class="comment"># 去掉 field 列为 NaN 的行</span></div><div class="line">df = df.dropna()                <span class="comment"># 去掉任意列为 NaN 的行</span></div></pre></td></tr></table></figure></p>
+<h3 id="sort-排序"><a href="#sort-排序" class="headerlink" title="sort 排序"></a>sort 排序</h3><p><a href="http://pandas.pydata.org/pandas-docs/version/0.19.2/generated/pandas.DataFrame.sort.html" target="_blank" rel="external">http://pandas.pydata.org/pandas-docs/version/0.19.2/generated/pandas.DataFrame.sort.html</a><br>默认升序，下列示例是以列 A 和 B 进行排序，其中 A 列升序，B 列降序<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = df.sort([<span class="string">'A'</span>, <span class="string">'B'</span>], ascending=[<span class="number">1</span>, <span class="number">0</span>])</div></pre></td></tr></table></figure></p>
+<h3 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h3><p><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.drop_duplicates.html" target="_blank" rel="external">https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.drop_duplicates.html</a><br>删除重复行，默认保留第一个<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = df.drop_duplicates()</div></pre></td></tr></table></figure></p>
+<h3 id="新添一列"><a href="#新添一列" class="headerlink" title="新添一列"></a>新添一列</h3><h4 id="新列与其它列没有关系"><a href="#新列与其它列没有关系" class="headerlink" title="新列与其它列没有关系"></a>新列与其它列没有关系</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df[<span class="string">'new_col'</span>] = value</div></pre></td></tr></table></figure>
+<h4 id="新列是通过其它列通过计算得出"><a href="#新列是通过其它列通过计算得出" class="headerlink" title="新列是通过其它列通过计算得出"></a>新列是通过其它列通过计算得出</h4><p>比如将时间戳转为日期格式，或者将 ip 转为地址<br>又比如对于成绩表来说，我需要统计总分<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df[<span class="string">'new_col'</span>] = df.apply(func, args=(arg1, arg2, ...))</div></pre></td></tr></table></figure></p>
+<h3 id="更改列名顺序"><a href="#更改列名顺序" class="headerlink" title="更改列名顺序"></a>更改列名顺序</h3><p>假如 df 列名顺序为 <code>[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;]</code>，改成 <code>[&#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;A&#39;]</code>：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df = df[[<span class="string">'D'</span>, <span class="string">'C'</span>, <span class="string">'B'</span>, <span class="string">'A'</span>]]</div></pre></td></tr></table></figure></p>
+<p>只取其中部分列<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df = df[[<span class="string">'A'</span>, <span class="string">'D'</span>]]</div></pre></td></tr></table></figure></p>
+<h3 id="isin"><a href="#isin" class="headerlink" title="isin"></a>isin</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">df = df[df.field.isin(df2.field)]</div><div class="line">df = df[~df.field.isin(df2.field)]</div></pre></td></tr></table></figure>
+<h3 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">df2 = df[(df[<span class="string">"key0"</span>] == <span class="number">0</span>) &amp; (df[<span class="string">"key1"</span>] == <span class="number">1</span>)]</div><div class="line">df2 = df[(df[<span class="string">"key0"</span>] == <span class="number">0</span>) | (df[<span class="string">"key1"</span>] == <span class="number">1</span>)]</div><div class="line">df2 = df[~ (df[<span class="string">"key0"</span>] == <span class="number">0</span>)]</div></pre></td></tr></table></figure>
+<h3 id="set-index"><a href="#set-index" class="headerlink" title="set_index"></a>set_index</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">df = df.set_index([<span class="string">'field1'</span>, <span class="string">'field2'</span>])</div><div class="line">df = df.reset_index()</div></pre></td></tr></table></figure>
+<h3 id="聚合操作"><a href="#聚合操作" class="headerlink" title="聚合操作"></a>聚合操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df = df.groupby([<span class="string">'field1'</span>, <span class="string">'field2'</span>]).agg(&#123;<span class="string">'field3'</span>: count, <span class="string">'field3'</span>: <span class="keyword">lambda</span> x: len(x.unique()), <span class="string">'field4'</span>: sum&#125;)</div></pre></td></tr></table></figure>
+<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> row <span class="keyword">in</span> df.itertuples():</div><div class="line">    <span class="keyword">pass</span></div></pre></td></tr></table></figure>
+<h3 id="astype"><a href="#astype" class="headerlink" title="astype"></a>astype</h3><p>修改列类型<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df[<span class="string">'field'</span>] = df[<span class="string">'field'</span>].astype(str)</div></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -383,290 +414,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/22/spark-mysql/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shenxgan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/9276147?v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xblog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/22/spark-mysql/" itemprop="url">Spark 读写 MySQL 数据库</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-22T15:24:26+08:00">
-                2017-11-22
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-29T10:57:06+08:00">
-                2017-11-29
-              </time>
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/pandas/" rel="tag"># pandas</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <blockquote>
-<p>记录 spark 读写 mysql 数据库的方式<br>spark 版本为 2.2.0</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/22/spark-mysql/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/22/spark-mysql/" rel="next" title="Spark 读写 MySQL 数据库">
+                <i class="fa fa-chevron-left"></i> Spark 读写 MySQL 数据库
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/04/build-record/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shenxgan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/9276147?v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xblog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/04/build-record/" itemprop="url">Hexo 博客搭建记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-04T12:41:54+08:00">
-                2017-11-04
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-29T11:16:50+08:00">
-                2017-11-29
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <blockquote>
-<p>记录本博客搭建历程</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/04/build-record/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -676,10 +453,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -687,6 +465,17 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -707,8 +496,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -765,6 +563,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置输出宽度"><span class="nav-number">1.</span> <span class="nav-text">设置输出宽度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改列名"><span class="nav-number">2.</span> <span class="nav-text">更改列名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dataframe-长度"><span class="nav-number">3.</span> <span class="nav-text">dataframe 长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#所有列的数据类型"><span class="nav-number">4.</span> <span class="nav-text">所有列的数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#merge"><span class="nav-number">5.</span> <span class="nav-text">merge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#update"><span class="nav-number">6.</span> <span class="nav-text">update</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#append"><span class="nav-number">7.</span> <span class="nav-text">append</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取-csv-文件"><span class="nav-number">8.</span> <span class="nav-text">读取 csv 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保存为-csv-文件"><span class="nav-number">9.</span> <span class="nav-text">保存为 csv 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#groupby-之后求去重个数"><span class="nav-number">10.</span> <span class="nav-text">groupby 之后求去重个数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测是否为空"><span class="nav-number">11.</span> <span class="nav-text">检测是否为空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#填充-NA-NaN"><span class="nav-number">12.</span> <span class="nav-text">填充 NA/NaN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sort-排序"><span class="nav-number">13.</span> <span class="nav-text">sort 排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#去重"><span class="nav-number">14.</span> <span class="nav-text">去重</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新添一列"><span class="nav-number">15.</span> <span class="nav-text">新添一列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新列与其它列没有关系"><span class="nav-number">15.1.</span> <span class="nav-text">新列与其它列没有关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新列是通过其它列通过计算得出"><span class="nav-number">15.2.</span> <span class="nav-text">新列是通过其它列通过计算得出</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改列名顺序"><span class="nav-number">16.</span> <span class="nav-text">更改列名顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#isin"><span class="nav-number">17.</span> <span class="nav-text">isin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算"><span class="nav-number">18.</span> <span class="nav-text">逻辑运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set-index"><span class="nav-number">19.</span> <span class="nav-text">set_index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚合操作"><span class="nav-number">20.</span> <span class="nav-text">聚合操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历"><span class="nav-number">21.</span> <span class="nav-text">遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#astype"><span class="nav-number">22.</span> <span class="nav-text">astype</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -898,6 +712,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -944,6 +762,30 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'shenxgan',
+            repo: 'shenxgan.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '1c7ad7e5e674e5eefa9687258794eabd20a5409b',
+            
+                client_id: '5e1323749314a43987c1'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
