@@ -88,7 +88,7 @@
 <meta property="og:description" content="整理 pandas 常用操作整理记录工作学习中遇到的所有 pandas 操作">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2017/12/05/pandas-basis/pandas_merge.png">
-<meta property="og:updated_time" content="2017-12-13T03:13:51.062Z">
+<meta property="og:updated_time" content="2017-12-20T06:33:51.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pandas 常用操作">
 <meta name="twitter:description" content="整理 pandas 常用操作整理记录工作学习中遇到的所有 pandas 操作">
@@ -324,8 +324,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-13T11:13:51+08:00">
-                2017-12-13
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-20T14:33:51+08:00">
+                2017-12-20
               </time>
             
           </span>
@@ -389,7 +389,7 @@
 <h3 id="填充-NA-NaN"><a href="#填充-NA-NaN" class="headerlink" title="填充 NA/NaN"></a>填充 NA/NaN</h3><p><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.fillna.html" target="_blank" rel="external">https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.fillna.html</a><br>将所有 NaN 替换为 0<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">df = df.fillna(<span class="number">0</span>)               <span class="comment"># 填充为 0</span></div><div class="line">df = df[df.field.notnull()]     <span class="comment"># 去掉 field 列为 NaN 的行</span></div><div class="line">df = df.dropna()                <span class="comment"># 去掉任意列为 NaN 的行</span></div></pre></td></tr></table></figure></p>
 <h3 id="sort-排序"><a href="#sort-排序" class="headerlink" title="sort 排序"></a>sort 排序</h3><p><a href="http://pandas.pydata.org/pandas-docs/version/0.19.2/generated/pandas.DataFrame.sort.html" target="_blank" rel="external">http://pandas.pydata.org/pandas-docs/version/0.19.2/generated/pandas.DataFrame.sort.html</a><br>默认升序，下列示例是以列 A 和 B 进行排序，其中 A 列升序，B 列降序<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = df.sort([<span class="string">'A'</span>, <span class="string">'B'</span>], ascending=[<span class="number">1</span>, <span class="number">0</span>])</div></pre></td></tr></table></figure></p>
 <h3 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h3><p><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.drop_duplicates.html" target="_blank" rel="external">https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.drop_duplicates.html</a><br>删除重复行，默认保留第一个<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = df.drop_duplicates()</div></pre></td></tr></table></figure></p>
-<h3 id="新添一列"><a href="#新添一列" class="headerlink" title="新添一列"></a>新添一列</h3><h4 id="新列与其它列没有关系"><a href="#新列与其它列没有关系" class="headerlink" title="新列与其它列没有关系"></a>新列与其它列没有关系</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df[<span class="string">'new_col'</span>] = value</div></pre></td></tr></table></figure>
+<h3 id="新添一列"><a href="#新添一列" class="headerlink" title="新添一列"></a>新添一列</h3><h4 id="新列与其它列没有关系"><a href="#新列与其它列没有关系" class="headerlink" title="新列与其它列没有关系"></a>新列与其它列没有关系</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">df[<span class="string">'new_col'</span>] = value                                           <span class="comment"># 在最后列后插入新列</span></div><div class="line">df.insert(<span class="number">0</span>, <span class="string">'new_col'</span>, value)                                  <span class="comment"># 在第一列前插入新列</span></div><div class="line">df.insert(df.columns.get_loc(<span class="string">'col1'</span>) + <span class="number">1</span>, <span class="string">'new_col'</span>, value)     <span class="comment"># 在 col1 列后面插入新列</span></div></pre></td></tr></table></figure>
 <h4 id="新列是通过其它列通过计算得出"><a href="#新列是通过其它列通过计算得出" class="headerlink" title="新列是通过其它列通过计算得出"></a>新列是通过其它列通过计算得出</h4><p>比如将时间戳转为日期格式，或者将 ip 转为地址<br>又比如对于成绩表来说，我需要统计总分<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df[<span class="string">'new_col'</span>] = df.apply(func, args=(arg1, arg2, ...))</div></pre></td></tr></table></figure></p>
 <h3 id="更改列名顺序"><a href="#更改列名顺序" class="headerlink" title="更改列名顺序"></a>更改列名顺序</h3><p>假如 df 列名顺序为 <code>[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;]</code>，改成 <code>[&#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;A&#39;]</code>：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df = df[[<span class="string">'D'</span>, <span class="string">'C'</span>, <span class="string">'B'</span>, <span class="string">'A'</span>]]</div></pre></td></tr></table></figure></p>
 <p>只取其中部分列<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df = df[[<span class="string">'A'</span>, <span class="string">'D'</span>]]</div></pre></td></tr></table></figure></p>
@@ -438,6 +438,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/29/beeline/" rel="prev" title="使用 beeline 连接 spark sql">
+                使用 beeline 连接 spark sql <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -525,7 +529,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -538,7 +542,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -593,7 +597,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
